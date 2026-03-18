@@ -17,6 +17,7 @@ def create_mesh(faces, vertices):
     for i, f in enumerate(faces):
         for j in range(3):
             cube.vectors[i][j] = vertices[f[j],:]
+    print(f"cube shape is {cube.shape}")
     # Write the mesh to file "cube.stl"
     cube.save('cube.stl')
 

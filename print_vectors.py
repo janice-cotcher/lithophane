@@ -1,8 +1,15 @@
 from stl import mesh
 import numpy as np
 
-your_mesh = mesh.Mesh.from_file('surface.stl')
+data = mesh.Mesh.from_file('moria1.stl')
 
-print(your_mesh.vectors.shape)      # dimensions first — good sanity check
-print(your_mesh.vectors[0])         # just the first triangle
-print(your_mesh.vectors[:5])        # first 5 triangles
+# Mirror along the X axis (change to y or z depending on which way your lithophane faces)
+data.x *= -1
+
+# Flipping inverts the winding order, which reverses the normals
+# This fixes them so the faces point the right way again
+data.vectors = data.vectors[:, ::-1, :]
+
+data.rotate([0, 0, 1], np.radians(90))
+
+data.save('mirrored.stl')
