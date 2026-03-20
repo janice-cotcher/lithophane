@@ -3,16 +3,6 @@ import math
 import numpy as np
 
 def main():
-<<<<<<< HEAD
-   paths, attributes = properties()
-   points = getPoints(attributes)
-    # points = [[10, 2], [0, 2], [1, 10], [1, 0]]
-   topL,topR,bottomL,bottomR = getVertices(points)
-   print(topL,topR,bottomL,bottomR)
-   calculate()
-
-def getPoints(attributes):
-=======
     paths, attributes = properties()
     print("Got paths and attritbutes")
     print(attributes)
@@ -45,7 +35,6 @@ def getAngles(topL,topR,bottomL,bottomR):
 
 def getPoints(attributes):
     print("Getting points")
->>>>>>> 9c59d54 (transform svg)
     cpoints = []
     for item in attributes:
         points = item['points'].split()
@@ -57,35 +46,21 @@ def getPoints(attributes):
             cpoints.append(point1)
         if point2 not in cpoints:
             cpoints.append(point2)
-<<<<<<< HEAD
-=======
     print("Returning points")
->>>>>>> 9c59d54 (transform svg)
     return cpoints
 
 
 def properties():
-<<<<<<< HEAD
     return svg2paths('mirrored.svg')
-=======
-    return svg2paths('rotated.svg')
->>>>>>> 9c59d54 (transform svg)
 
 def lengths(p1, p2):
     return math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
 
-<<<<<<< HEAD
-def calculate():
-=======
 def compare():
->>>>>>> 9c59d54 (transform svg)
     topL = (-44.28, 902.56)
     topR = (791.39, 423.24)
     bottomL = (1096.63, 1558.8)
     bottomR = (1932.29, 1077.64)
-<<<<<<< HEAD
-
-=======
     top = lengths(topL, topR)
     left = lengths(topL, bottomL)
     right = lengths(topR, bottomR)
@@ -94,25 +69,17 @@ def compare():
     print(top, left, right, bottom)
     
 def calculate(topL, topR, bottomL, bottomR):
->>>>>>> 9c59d54 (transform svg)
     top = lengths(topL, topR)
     left = lengths(topL, bottomL)
     right = lengths(topR, bottomR)
     bottom = lengths(bottomR, bottomL)
 
-<<<<<<< HEAD
-    print(top, left, right, bottom)
-
-def getVertices(points):
-    pts = np.array(points)
-=======
     return top, left, right, bottom
 
 def getVertices(points):
     print("getting vertices")
     pts = np.array(points)
     print("transformed into numpy array")
->>>>>>> 9c59d54 (transform svg)
     max = np.argmax(pts, axis=0)
     print("found max")
     bottomL = pts[max[0]]

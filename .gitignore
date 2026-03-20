@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-.venv/
-=======
 .DS_Store
 .venv/
 __pycache__/
->>>>>>> 9c59d54 (transform svg)
+.vscode/
