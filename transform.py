@@ -3,10 +3,12 @@ import math
 import numpy as np
 
 def main():
-    paths, attributes = properties()
+    # file = "mirrored.stl"
+    file = "mirror.svg"
+    paths, attributes = properties(file)
     print("Got paths and attritbutes")
-    print(attributes)
-    # points = getPoints(attributes)
+    # print(attributes)
+    points = getPoints(attributes)
     # # points = [[10, 2], [0, 2], [1, 10], [1, 0]]
     # topL,topR,bottomL,bottomR = getVertices(points)
     # with open("vertices.txt", "w") as file:
@@ -50,8 +52,8 @@ def getPoints(attributes):
     return cpoints
 
 
-def properties():
-    return svg2paths('mirrored.svg')
+def properties(file):
+    return svg2paths(file)
 
 def lengths(p1, p2):
     return math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
