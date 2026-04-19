@@ -1,22 +1,31 @@
 from stl import mesh
 import numpy as np
-from path_utility import find_crease_edges, chain_crease_edges, coords_to_indices
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from matplotlib.path import Path
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
-ls = []
-data = mesh.Mesh.from_file('mirrored.stl')
+
+file = "durins_door.stl"
+
+# ls = []
+data = mesh.Mesh.from_file(file)
 vectors = data.vectors
+# for triangle in vectors:
+#     for point in triangle:
+#         ls.append(point)
 
-for triangle in vectors:
-    for point in triangle:
-        ls.append(point)
+# vertices = np.array(ls)
+# unique_vertices = np.unique(vertices)
 
-vertices = np.array(ls)
-unique_vertices = np.unique(vertices, axis=0)
-triangles = coords_to_indices(unique_vertices, vectors)
-crease_edges = find_crease_edges(vertices, triangles, target_angle_deg=90.0, tolerance_deg=10)
-paths = chain_crease_edges(crease_edges)
-for path in paths:
-    coord = vertices[path]
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+
+collection = Poly3DCollection(vectors, alpha=0.5)
+collection.set_edgecolor('k')
+collection.set_facecolor('cyan')
+ax.add_collection3d(collection)
+
+# scale = data.points.flatten()
+ax.view_init(0, -90, 0)
+# ax.auto_scale_xyz(scale, scale, scale)
+
+plt.savefig("visualize.png")
