@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 # load the mesh from the stl file
 file='cow.stl'
+# file = "durins_door.stl"
 data = mesh.Mesh.from_file(file)
 
 # subdivide the mesh for a more detailed image
